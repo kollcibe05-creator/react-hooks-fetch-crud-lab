@@ -19,7 +19,20 @@ function QuestionForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(formData);
+  const questionsData ={
+  prompt: formData.prompt,
+  answers : [formData.answer1, formData.answer2, formData.answer3, formData.answer4]
+}
+
+      fetch("http://localhost:4000/questions",{
+       method: "POST",
+       headers:{
+        'Content-Type': 'application/json',
+       }, 
+       body: JSON.stringify(questionsData)
+      })
+      .then(r => r.json())
+      .then(newItem => console.log(newItem))
   }
 
   return (
@@ -84,7 +97,7 @@ function QuestionForm(props) {
             <option value="3">{formData.answer4}</option>
           </select>
         </label>
-        <button type="submit">Add Question</button>
+        <button type="submit" >Add Question</button>
       </form>
     </section>
   );
