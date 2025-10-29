@@ -2,19 +2,8 @@ import React,{useState, useEffect} from "react"
 import QuestionItem from "./QuestionItem";
 
 
-function QuestionList() {
+function QuestionList({questions, onDeleteQuestion}) {
 
-  const [questions, setQuestions] = useState([])
-useEffect(() => {
-  fetch("http://localhost:4000/questions")
-  .then(r => r.json())
-  .then(data => setQuestions(data))
-},[])
-
-function handleBackDelete (id) {
-  const updatedQuestions = questions.filter( question =>  question.id !== id)
-  setQuestions(updatedQuestions)
-}
 
 
 
@@ -26,7 +15,7 @@ function handleBackDelete (id) {
         <QuestionItem
         key={question.id}
         question={question}
-        handleBackDelete={handleBackDelete}
+        onDeleteQuestion={onDeleteQuestion}
         />
       )) 
     }</ul>

@@ -1,15 +1,43 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-function QuestionItem({ question, handleBackDelete }) {
+function QuestionItem({ question, onDeleteQuestion }) {
   const { id, prompt, answers, correctIndex } = question;
 
   function handleDeleteClick() {
 fetch (`http://localhost:4000/questions/${id}`, {
   method: 'DELETE',
 })
-.then(r => r.json())
-.then((item) => handleBackDelete(id))
+.then(r => {
+      // Check if the response was successful (e.g., 200 OK or 204 No Content)
+      if (r.ok) {
+        // Call the parent handler with the known ID to update the App's state
+        onDeleteQuestion(id); 
+      } else {
+        console.error("Failed to delete question on server.");
+      }
+    })
+    .catch(error => console.error("Error during delete operation:", error));
+  }
 
+
+  function handleUpdateCorrectIndex(event) {
+    const newCorrectIndex = parseInt(event.target.value); // Get new index as number
+
+    fetch(`http://localhost:4000/questions/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        correctIndex: newCorrectIndex,
+      }),
+    })
+    .then(r => {
+      if (!r.ok) {
+        console.error("Failed to update correct answer on server.");
+      }
+    })
+    .catch(error => console.error("Error patching question:", error));
   }
 
   const options = answers.map((answer, index) => (
@@ -24,7 +52,7 @@ fetch (`http://localhost:4000/questions/${id}`, {
       <h5>Prompt: {prompt}</h5>
       <label>
         Correct Answer:
-        <select defaultValue={correctIndex}>{options}</select>
+        <select defaultValue={correctIndex} onChange={handleUpdateCorrectIndex} aria-label="Correct">{options}</select>
       </label>
       <button onClick={handleDeleteClick}>Delete Question</button>
     </li>
