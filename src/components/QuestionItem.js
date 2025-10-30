@@ -8,9 +8,9 @@ fetch (`http://localhost:4000/questions/${id}`, {
   method: 'DELETE',
 })
 .then(r => {
-      // Check if the response was successful (e.g., 200 OK or 204 No Content)
+  
       if (r.ok) {
-        // Call the parent handler with the known ID to update the App's state
+        // call the parent function
         onDeleteQuestion(id); 
       } else {
         console.error("Failed to delete question on server.");
