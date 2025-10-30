@@ -20,10 +20,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!(msw|@adobe/css-tools|@testing-library/jest-dom)/)\" --reporters=@learn-co-curriculum/jest-learn-reporter --reporters=default --watchAll",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!(msw|@adobe/css-tools|@testing-library/jest-dom|whatwg-fetch)/)\" --reporters=@learn-co-curriculum/jest-learn-reporter --reporters=default --watchAll",
     "eject": "react-scripts eject",
     "server": "json-server --watch db.json --port=4000"
   },
+  
   "eslintConfig": {
     "extends": [
       "react-app",
