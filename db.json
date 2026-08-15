@@ -1,3 +1,59 @@
 {
-  "questions": []
+  "questions": [
+    {
+      "prompt": "Who is the Queen of Pop",
+      "answers": [
+        "Queen Latifah",
+        "Lauryn Hill",
+        "Lana Del Rey",
+        "Ice Spice"
+      ],
+      "correctIndex": 2,
+      "id": 1
+    },
+    {
+      "prompt": "What are components",
+      "answers": [
+        "Functions that take in props and return JSX",
+        "Pure functions",
+        "IIFEs",
+        "State"
+      ],
+      "correctIndex": 0,
+      "id": 2
+    },
+    {
+      "prompt": "Who wrote The Gatsby",
+      "answers": [
+        "Robert Greene",
+        "Patrick King",
+        "F.Scott FitzGerald",
+        "Carl Jung"
+      ],
+      "correctIndex": 2,
+      "id": 3
+    },
+    {
+      "prompt": "Which of the following books is not a novel",
+      "answers": [
+        "To kill a Mocking Bird",
+        "The Alchemist",
+        "Wuthering Heights",
+        "Rich Dad, Poor Dad"
+      ],
+      "correctIndex": 3,
+      "id": 4
+    },
+    {
+      "prompt": "Which of the following is a conscious rapper",
+      "answers": [
+        "Nas",
+        "Eminem",
+        "Jay Z",
+        "DMX"
+      ],
+      "correctIndex": 0,
+      "id": 5
+    }
+  ]
 }
